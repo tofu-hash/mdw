@@ -180,9 +180,6 @@ class MarkdownEditor(QWidget):
                 "}</style> " % config.FONT_SIZE
         # text = text.replace('"', '<span style="color: %s;">' % config.MARK_COLOR + '"' + '</span>')
         text = style + text
-        text = text.replace('<code>',
-                            '<code style="color: %s; font-weight: %s;">' %
-                            (config.CODE_COLOR, config.CODE_FONT_WEIGHT))
         text = text.replace('<img ', '<img width="450" ')
         text = text.replace('<h1>', '<div style="font-size: %spx; font-weight: 900;">' % int(config.FONT_SIZE * 2))
         text = text.replace('<h2>', '<div style="font-size: %spx; font-weight: 900;">' % int(config.FONT_SIZE * 1.5))

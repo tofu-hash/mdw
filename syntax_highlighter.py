@@ -15,7 +15,7 @@ class Highlighter(QSyntaxHighlighter):
         keyword_format.setFontWeight(QtGui.QFont.Bold)
         keywords = ['if', 'else', 'while', 'for', 'return']
         for word in keywords:
-            pattern = QtCore.QRegExp("\\b" + word + "\\b")
+            pattern = QtCore.QRegExp("" + word + "")
             rule = (pattern, keyword_format)
             self.highlighting_rules.append(rule)
 
@@ -27,7 +27,7 @@ class Highlighter(QSyntaxHighlighter):
 
         code_format = QtGui.QTextCharFormat()
         code_format.setForeground(QColor(100, 100, 200))
-        rule = (QtCore.QRegExp("<code>.*</code>"), string_format)
+        rule = (QtCore.QRegExp("<cd>.*</cd>"), string_format)
         self.highlighting_rules.append(rule)
 
         comment_format = QtGui.QTextCharFormat()
