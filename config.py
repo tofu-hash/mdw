@@ -1,9 +1,9 @@
 FONT = 'Helvetica'                  # Шрифт
-FONT_SIZE = 20                      # Размер шрифта
-FONT_WEIGHT = 600                   # Толщина шрифта
+FONT_SIZE = 18                      # Размер шрифта
+FONT_WEIGHT = 400                   # Толщина шрифта
 
 CODE_COLOR = 'rgb(180, 180, 250)'   # Цвет выделения кода (```code```)
-CODE_FONT_WEIGHT = 900              # Толщина выделения кода (```code```)
+CODE_FONT_WEIGHT = 400              # Толщина выделения кода (```code```)
 
 MARK_COLOR = 'rgb(200, 100, 100)'   # Цвет кавычек и текста в них
 
