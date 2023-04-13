@@ -54,41 +54,43 @@ class MarkdownEditor(QWidget):
 
         icon_size = 20
 
+        self.now_cursor_position = 0
+
         self.add_bold = QPushButton()
         self.add_bold.setIcon(QIcon('icons/editor/bold.png'))
         self.add_bold.setIconSize(QSize(icon_size, icon_size))
         self.add_bold.setCursor(Qt.PointingHandCursor)
-        self.add_bold.clicked.connect(lambda: self.paste_format('__ [ ] __'))
+        self.add_bold.clicked.connect(lambda: self.paste_format('__   __'))
 
         self.add_italic = QPushButton()
         self.add_italic.setIcon(QIcon('icons/editor/italic.png'))
         self.add_italic.setIconSize(QSize(icon_size, icon_size))
         self.add_italic.setCursor(Qt.PointingHandCursor)
-        self.add_italic.clicked.connect(lambda: self.paste_format('__ [ ] __'))
+        self.add_italic.clicked.connect(lambda: self.paste_format('__  __'))
 
         self.add_h1 = QPushButton()
         self.add_h1.setIcon(QIcon('icons/editor/header.png'))
         self.add_h1.setIconSize(QSize(icon_size, icon_size))
         self.add_h1.setCursor(Qt.PointingHandCursor)
-        self.add_h1.clicked.connect(lambda: self.paste_format('# [ ]'))
+        self.add_h1.clicked.connect(lambda: self.paste_format('#   '))
 
         self.add_h2 = QPushButton()
         self.add_h2.setIcon(QIcon('icons/editor/header2.png'))
         self.add_h2.setIconSize(QSize(icon_size, icon_size))
         self.add_h2.setCursor(Qt.PointingHandCursor)
-        self.add_h2.clicked.connect(lambda: self.paste_format('## [ ]'))
+        self.add_h2.clicked.connect(lambda: self.paste_format('##   '))
 
         self.add_h3 = QPushButton()
         self.add_h3.setIcon(QIcon('icons/editor/header3.png'))
         self.add_h3.setIconSize(QSize(icon_size, icon_size))
         self.add_h3.setCursor(Qt.PointingHandCursor)
-        self.add_h3.clicked.connect(lambda: self.paste_format('### [ ]'))
+        self.add_h3.clicked.connect(lambda: self.paste_format('###    '))
 
         self.add_code = QPushButton()
         self.add_code.setIcon(QIcon('icons/editor/code.png'))
         self.add_code.setIconSize(QSize(icon_size, icon_size))
         self.add_code.setCursor(Qt.PointingHandCursor)
-        self.add_code.clicked.connect(lambda: self.paste_format('### [ ]'))
+        self.add_code.clicked.connect(lambda: self.paste_format('###   '))
 
         self.add_image_button = QPushButton()
         self.add_image_button.setIcon(QIcon('icons/editor/image.png'))
@@ -157,6 +159,8 @@ class MarkdownEditor(QWidget):
         self.save_button.clicked.connect(self.save_file)
         self.open_button.clicked.connect(self.open_file)
 
+        self.editor.setFocus()
+
     def switch_windows(self):
         if self.editor.isVisible():
             self.update_preview()
@@ -171,7 +175,7 @@ class MarkdownEditor(QWidget):
     def update_preview(self):
         markdown_text = self.editor.toPlainText()
         html = self.parse_html(markdown.markdown(markdown_text))
-        print(html)
+        self.now_cursor_position = int(self.editor.textCursor().position())
         self.preview.setHtml(html)
 
     def parse_html(self, text: str):
